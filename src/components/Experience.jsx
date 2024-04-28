@@ -111,18 +111,20 @@ const EXPGrid = ({ serv, servidx }) => {
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
-      </motion.div>
+      <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+        <motion.div variants={textVariant()}>
+          <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
+        </motion.div>
 
-      <div className="mt-20 flex flex-col">
-        {experiences.map((experience, index) => (
-          <EXPGrid
-            key={`experience-${index}`}
-            servidx={index}
-            serv={experience}
-          />
-        ))}
+        <div className="mt-20 flex flex-col">
+          {experiences.map((experience, index) => (
+            <EXPGrid
+              key={`experience-${index}`}
+              servidx={index}
+              serv={experience}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
