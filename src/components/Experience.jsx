@@ -1,42 +1,20 @@
-import React from "react";
-import "react-vertical-timeline-component/style.min.css";
-
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
-import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const EXPGrid = ({ serv, servidx }) => {
+const EXPGrid = ({ serv, servidx, inView }) => {
   const isImageLeft = servidx % 2 === 0;
   const controls = useAnimation();
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const top = ref.current.offsetTop;
-      const windowHeight = window.innerHeight;
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition > top - windowHeight / 2) {
-        setIsVisible(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isVisible) {
+    if (inView) {
       controls.start("visible");
     }
-  }, [controls, isVisible]);
+  }, [controls, inView]);
 
   const imageVariants = {
     hidden: { opacity: 0, x: isImageLeft ? "-100%" : "100%" },
@@ -58,7 +36,6 @@ const EXPGrid = ({ serv, servidx }) => {
 
   return (
     <div
-      ref={ref}
       className="flex flex-col md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4"
     >
       <motion.div
@@ -109,24 +86,28 @@ const EXPGrid = ({ serv, servidx }) => {
 };
 
 const Experience = () => {
-  return (
-    <>
-      <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
-        <motion.div variants={textVariant()}>
-          <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
-        </motion.div>
+  const { ref, inView } = useInView({
+    threshold: 0.5, // When 50% of the Experience section is in the viewport
+    triggerOnce: true, // Trigger the animation only once
+  });
 
-        <div className="mt-20 flex flex-col">
-          {experiences.map((experience, index) => (
-            <EXPGrid
-              key={`experience-${index}`}
-              servidx={index}
-              serv={experience}
-            />
-          ))}
-        </div>
+  return (
+    <div ref={ref} className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+      <motion.div variants={textVariant()}>
+        <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
+      </motion.div>
+
+      <div className="mt-20 flex flex-col">
+        {experiences.map((experience, index) => (
+          <EXPGrid
+            key={`experience-${index}`}
+            servidx={index}
+            serv={experience}
+            inView={inView}
+          />
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
