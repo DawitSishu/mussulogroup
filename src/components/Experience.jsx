@@ -111,7 +111,7 @@ const Experience = () => {
             inView={inView}
           />
         ))}
-      </motion.div>
+      </motion.div> 
     </div>
   );
 };
