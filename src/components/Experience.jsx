@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
+import { textVariant, staggerContainer } from "../utils/motion";
 import { useInView } from "react-intersection-observer";
 
 const EXPGrid = ({ serv, servidx, inView }) => {
@@ -35,9 +35,7 @@ const EXPGrid = ({ serv, servidx, inView }) => {
   };
 
   return (
-    <div
-      className="flex flex-col md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4"
-    >
+    <div className="flex flex-col md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4">
       <motion.div
         className={`w-full md:w-1/2 flex justify-center items-center mb-4 md:mb-0 ${
           isImageLeft ? "order-1" : "order-2"
@@ -87,17 +85,24 @@ const EXPGrid = ({ serv, servidx, inView }) => {
 
 const Experience = () => {
   const { ref, inView } = useInView({
-    threshold: 0.5, // When 50% of the Experience section is in the viewport
-    triggerOnce: true, // Trigger the animation only once
+    threshold: 0.5, 
+    triggerOnce: true, 
   });
 
   return (
-    <div ref={ref} className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <div
+      ref={ref}
+      className={`${styles.padding} max-w-7xl mx-auto relative z-0`}
+    >
       <motion.div variants={textVariant()}>
         <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <motion.div
+        className="mt-20 flex flex-col"
+        animate={inView ? "visible" : "hidden"}
+        variants={staggerContainer(0.5, 0.5)} 
+      >
         {experiences.map((experience, index) => (
           <EXPGrid
             key={`experience-${index}`}
@@ -106,9 +111,8 @@ const Experience = () => {
             inView={inView}
           />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
-
 export default SectionWrapper(Experience, "portfolio");
