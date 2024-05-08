@@ -1,20 +1,42 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React from "react";
+import "react-vertical-timeline-component/style.min.css";
+
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant, staggerContainer } from "../utils/motion";
-import { useInView } from "react-intersection-observer";
+import { textVariant } from "../utils/motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
-const EXPGrid = ({ serv, servidx, inView }) => {
+const EXPGrid = ({ serv, servidx }) => {
   const isImageLeft = servidx % 2 === 0;
   const controls = useAnimation();
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef();
 
   useEffect(() => {
-    if (inView) {
+    const handleScroll = () => {
+      const top = ref.current.offsetTop;
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > top - windowHeight / 2) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
       controls.start("visible");
     }
-  }, [controls, inView]);
+  }, [controls, isVisible]);
 
   const imageVariants = {
     hidden: { opacity: 0, x: isImageLeft ? "-100%" : "100%" },
@@ -35,7 +57,10 @@ const EXPGrid = ({ serv, servidx, inView }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4">
+    <div
+      ref={ref}
+      className="flex flex-col md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4"
+    >
       <motion.div
         className={`w-full md:w-1/2 flex justify-center items-center mb-4 md:mb-0 ${
           isImageLeft ? "order-1" : "order-2"
@@ -84,35 +109,25 @@ const EXPGrid = ({ serv, servidx, inView }) => {
 };
 
 const Experience = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.5, 
-    triggerOnce: true, 
-  });
-
   return (
-    <div
-      ref={ref}
-      className={`${styles.padding} max-w-7xl mx-auto relative z-0`}
-    >
-      <motion.div variants={textVariant()}>
-        <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
-      </motion.div>
+    <>
+      <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+        <motion.div variants={textVariant()}>
+          <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
+        </motion.div>
 
-      <motion.div
-        className="mt-20 flex flex-col"
-        animate={inView ? "visible" : "hidden"}
-        
-      >
-        {experiences.map((experience, index) => (
-          <EXPGrid
-            key={`experience-${index}`}
-            servidx={index}
-            serv={experience}
-            inView={inView}
-          />
-        ))}
-      </motion.div> 
-    </div>
+        <div className="mt-20 flex flex-col">
+          {experiences.map((experience, index) => (
+            <EXPGrid
+              key={`experience-${index}`}
+              servidx={index}
+              serv={experience}
+            />
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
+
 export default SectionWrapper(Experience, "portfolio");
