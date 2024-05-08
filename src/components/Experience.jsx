@@ -101,7 +101,7 @@ const Experience = () => {
       <motion.div
         className="mt-20 flex flex-col"
         animate={inView ? "visible" : "hidden"}
-        variants={staggerContainer(0.5, 0.5)} 
+        
       >
         {experiences.map((experience, index) => (
           <EXPGrid
