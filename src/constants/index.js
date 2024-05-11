@@ -52,7 +52,6 @@ const navLinks = [
   },
 ];
 
-
 const experiences = [
   {
     company_name:
@@ -98,6 +97,7 @@ const experiences = [
       "Tourism",
       "Food ",
       "Health and wellness",
+      "Construction",
     ],
   },
 ];
@@ -123,8 +123,4 @@ const team = [
   },
 ];
 
-export {
-  experiences,
-  navLinks,
-  team,
-};
+export { experiences, navLinks, team };
