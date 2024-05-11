@@ -84,7 +84,7 @@ const Contact = () => {
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="mt-12 flex flex-col gap-8"
+            className="mt-12 flex flex-col gap-8 sm:w-full"
           >
             <label className="flex flex-col">
               <span className="text-white font-medium mb-4">Your Name</span>
@@ -94,7 +94,7 @@ const Contact = () => {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="What's your good name?"
-                className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-1/2"
+                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
                 style={{ backdropFilter: "blur(8px)" }}
               />
             </label>
@@ -106,7 +106,7 @@ const Contact = () => {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="What's your email address?"
-                className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-1/2"
+                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
                 style={{ backdropFilter: "blur(8px)" }}
               />
             </label>
@@ -118,7 +118,7 @@ const Contact = () => {
                 value={form.subject}
                 onChange={handleChange}
                 placeholder="What's the subject?"
-                className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-1/2"
+                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
                 style={{ backdropFilter: "blur(8px)" }}
               />
             </label>
@@ -130,14 +130,14 @@ const Contact = () => {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="What do you want to say?"
-                className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-1/2"
+                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2 sm:w-fullsss"
                 style={{ backdropFilter: "blur(8px)" }}
               />
             </label>
 
             <button
               type="submit"
-              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+              className="violet-gradient py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
             >
               {loading ? "Sending..." : "Send"}
             </button>

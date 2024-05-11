@@ -7,17 +7,19 @@ const Experience = React.lazy(() => import("./components/Experience"));
 const Hero = React.lazy(() => import("./components/Hero"));
 const Navbar = React.lazy(() => import("./components/Navbar"));
 const Team = React.lazy(() => import("./components/Team"));
+const Projects = React.lazy(() => import("./components/Projects"));
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="relative z-0 bg-primary">
+      <div className="relative z-0 black-gradient">
         {/* <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center"> */}
         <Navbar />
         <Hero />
         {/* </div> */}
         <About />
         <Experience />
+        <Projects />
         <Team />
         <div className="relative z-0">
           <Contact />

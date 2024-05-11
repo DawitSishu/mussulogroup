@@ -89,7 +89,7 @@ const EXPGrid = ({ serv, servidx }) => {
           <h3 className="text-white text-[24px] font-bold mb-2">
             {serv.title}
           </h3>
-          <p className="text-secondary text-[16px] font-semibold mb-4">
+          <p className="text-white text-[16px] font-semibold mb-4">
             {serv.company_name}
           </p>
         </div>

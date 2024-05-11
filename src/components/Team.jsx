@@ -13,7 +13,7 @@ const Team = () => {
       transition: {
         type: "spring",
         duration: 0.75,
-        delay: 0.1, // Adjust the delay to stagger the animation
+        delay: 0.1,
       },
     },
   };
@@ -43,7 +43,7 @@ const Team = () => {
                   <div className="p-4">
                     <h2 className="text-xl font-bold mb-2">{member.name}</h2>
                     <p className="text-sm mb-2">{member.loc}</p>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center">
+                    <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center">
                       Contact <LinkedInIcon className="ml-1" />
                     </button>
                   </div>
@@ -57,4 +57,4 @@ const Team = () => {
   );
 };
 
-export default SectionWrapper(Team,"team");
+export default SectionWrapper(Team, "team");
