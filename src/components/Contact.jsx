@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import bg from "../assets/globe2.jpg";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import { slideIn } from "../utils/motion";
 
 const Contact = () => {
@@ -32,12 +34,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        form,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      );
+      await emailjs.sendForm("", "", form, "");
 
       setLoading(false);
       alert("Thank you. I will get back to you as soon as possible.");
@@ -52,9 +49,20 @@ const Contact = () => {
       setLoading(false);
       console.error(error);
 
-      alert("Ahh, something went wrong. Please try again.");
+      toastr.error("Something went wrong. Please try again.");
     }
   };
+
+  useEffect(() => {
+    toastr.options = {
+      closeButton: true,
+      newestOnTop: true,
+      progressBar: true,
+      showDuration: 300,
+      hideDuration: 1000,
+      timeOut: 5000,
+    };
+  }, []);
 
   return (
     <div

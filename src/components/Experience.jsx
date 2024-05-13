@@ -40,7 +40,7 @@ const EXPGrid = ({ serv, servidx }) => {
   return (
     <div
       ref={ref}
-      className={`flex   items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4 ${
+      className={`flex md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4 ${
         isImageLeft && window.innerWidth <= 768
           ? "flex-col"
           : "flex-col-reverse"
