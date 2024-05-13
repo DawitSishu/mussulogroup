@@ -1,88 +1,66 @@
-import React from "react";
-import "react-vertical-timeline-component/style.min.css";
-
+import React, { useEffect, useRef } from "react";
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
-import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const EXPGrid = ({ serv, servidx }) => {
   const isImageLeft = servidx % 2 === 0;
-  const controls = useAnimation();
-  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const top = ref.current.offsetTop;
-      const windowHeight = window.innerHeight;
-      const scrollPosition = window.scrollY;
+    const element = ref.current;
+    const imageContainer = element.querySelector(".image-container");
+    const textContainer = element.querySelector(".text-container");
 
-      if (scrollPosition > top - windowHeight / 2) {
-        setIsVisible(true);
-      }
-    };
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
+      },
+    });
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isVisible) {
-      controls.start("visible");
-    }
-  }, [controls, isVisible]);
-
-  const imageVariants = {
-    hidden: { opacity: 0, x: isImageLeft ? "-100%" : "100%" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, x: isImageLeft ? "100%" : "-100%" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+    tl.fromTo(
+      imageContainer,
+      { opacity: 0, x: isImageLeft ? "-100%" : "100%" },
+      { opacity: 1, x: 0, duration: 0.5, ease: "easeOut" }
+    ).fromTo(
+      textContainer,
+      { opacity: 0, x: isImageLeft ? "100%" : "-100%" },
+      { opacity: 1, x: 0, duration: 0.5, ease: "easeOut" },
+      "-=0.5"
+    );
+  }, [isImageLeft]);
 
   return (
     <div
       ref={ref}
-      className="flex flex-col md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4"
+      className={`flex   items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4 ${
+        isImageLeft && window.innerWidth <= 768
+          ? "flex-col"
+          : "flex-col-reverse"
+      }`}
     >
-      <motion.div
+      <div
         className={`w-full md:w-1/2 flex justify-center items-center mb-4 md:mb-0 ${
           isImageLeft ? "order-1" : "order-2"
-        } md:mr-4`}
-        initial="hidden"
-        animate={controls}
-        variants={imageVariants}
+        } md:mr-4 image-container`}
       >
-        <motion.img
+        <img
           src={serv.icon}
           alt={serv.title}
           className="w-52 h-52 md:w-60 md:h-60 rounded-full object-cover"
-          variants={imageVariants}
         />
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className={`w-full md:w-1/2 flex flex-col justify-center md:ml-8 ${
           isImageLeft ? "order-2" : "order-1"
-        }`}
-        initial="hidden"
-        animate={controls}
-        variants={textVariants}
+        } text-container`}
       >
         <div>
           <h3 className="text-white text-[35px] font-bold mb-2">{serv.date}</h3>
@@ -103,7 +81,7 @@ const EXPGrid = ({ serv, servidx }) => {
             </li>
           ))}
         </ul>
-      </motion.div>
+      </div>
     </div>
   );
 };
@@ -112,9 +90,9 @@ const Experience = () => {
   return (
     <>
       <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
-        <motion.div variants={textVariant()}>
+        <div>
           <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
-        </motion.div>
+        </div>
 
         <div className="mt-20 flex flex-col">
           {experiences.map((experience, index) => (
