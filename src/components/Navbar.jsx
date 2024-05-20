@@ -29,7 +29,7 @@ const Navbar = () => {
             <li
               key={Link.id}
               className={`${
-                active === Link.title ? "text-white" : "text-secondary"
+                active === Link.title ? "text-white" : "GoldColored"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(Link.title)}
             >
@@ -42,7 +42,7 @@ const Navbar = () => {
             <div
               key={Link.id}
               className={`${
-                active === Link.title ? "text-white" : "text-secondary"
+                active === Link.title ? "text-white" : "GoldColored"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(Link.title)}
             >
@@ -69,7 +69,7 @@ const Navbar = () => {
                 <li
                   key={Link.id}
                   className={`${
-                    active === Link.title ? "text-white" : "text-secondary"
+                    active === Link.title ? "text-white" : "GoldColored"
                   } font-poppins hover:text-white text-[16px] font-medium cursor-pointer`}
                   onClick={() => {
                     setToggle(!toggle);
