@@ -65,92 +65,96 @@ const Contact = () => {
   }, []);
 
   return (
-    <div
-      className={`w-full overflow-hidden`}
-      style={{
-        backgroundImage: `url(${bg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="underfilter ll rr"></div>
-      <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
-        <motion.div
-          variants={slideIn("left", "tween", 0.2, 1)}
-          className="flex-[0.75] p-8 rounded-2xl "
-        >
-          <p className={styles.heroSubText}>Get in touch</p>
-          <div className="flex items-center mt-4">
-            <FaEnvelope className="text-white mr-4" />
-            <p className="text-white">Info@Macromgroup.com</p>
-          </div>
-          <div className="flex items-center mt-4">
-            <FaMapMarkerAlt className="text-white mr-4" />
-            <p className="text-white">124 City Road, London, EC1V 2NX</p>
-          </div>
-          <h3 className={styles.sectionHeadText}>Contact</h3>
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="mt-12 flex flex-col gap-8 sm:w-full"
+    <div className="relative z-0">
+      <div
+        className={`w-full overflow-hidden`}
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="underfilter ll rr"></div>
+        <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+          <motion.div
+            variants={slideIn("left", "tween", 0.2, 1)}
+            className="flex-[0.75] p-8 rounded-2xl "
           >
-            <label className="flex flex-col">
-              <span className="text-white font-medium mb-4">Your Name</span>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="What's your good name?"
-                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
-                style={{ backdropFilter: "blur(8px)" }}
-              />
-            </label>
-            <label className="flex flex-col">
-              <span className="text-white font-medium mb-4">Your Email</span>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="What's your email address?"
-                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
-                style={{ backdropFilter: "blur(8px)" }}
-              />
-            </label>
-            <label className="flex flex-col">
-              <span className="text-white font-medium mb-4">Subject</span>
-              <input
-                type="text"
-                name="subject"
-                value={form.subject}
-                onChange={handleChange}
-                placeholder="What's the subject?"
-                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
-                style={{ backdropFilter: "blur(8px)" }}
-              />
-            </label>
-            <label className="flex flex-col">
-              <span className="text-white font-medium mb-4">Your Message</span>
-              <textarea
-                rows={7}
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="What do you want to say?"
-                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2 sm:w-fullsss"
-                style={{ backdropFilter: "blur(8px)" }}
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="violet-gradient py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            <p className={styles.heroSubText}>Get in touch</p>
+            <div className="flex items-center mt-4">
+              <FaEnvelope className="text-white mr-4" />
+              <p className="text-white">Info@Macromgroup.com</p>
+            </div>
+            <div className="flex items-center mt-4">
+              <FaMapMarkerAlt className="text-white mr-4" />
+              <p className="text-white">124 City Road, London, EC1V 2NX</p>
+            </div>
+            <h3 className={styles.sectionHeadText}>Contact</h3>
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="mt-12 flex flex-col gap-8 sm:w-full"
             >
-              {loading ? "Sending..." : "Send"}
-            </button>
-          </form>
-        </motion.div>
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">Your Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="What's your good name?"
+                  className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
+                  style={{ backdropFilter: "blur(8px)" }}
+                />
+              </label>
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">Your Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="What's your email address?"
+                  className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
+                  style={{ backdropFilter: "blur(8px)" }}
+                />
+              </label>
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">Subject</span>
+                <input
+                  type="text"
+                  name="subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  placeholder="What's the subject?"
+                  className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2"
+                  style={{ backdropFilter: "blur(8px)" }}
+                />
+              </label>
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">
+                  Your Message
+                </span>
+                <textarea
+                  rows={7}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="What do you want to say?"
+                  className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border-none font-medium w-full sm:w-1/2 sm:w-fullsss"
+                  style={{ backdropFilter: "blur(8px)" }}
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="violet-gradient py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+              >
+                {loading ? "Sending..." : "Send"}
+              </button>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
