@@ -46,11 +46,6 @@ const Team = () => {
               style={{ width: "350px" }}
             >
               <div className="shadow-md rounded-lg overflow-hidden">
-                <img
-                  className="w-full h-40 object-cover object-center"
-                  src={member.img}
-                  alt={member.name}
-                />
                 <div className="p-4">
                   <h2 className="text-xl font-bold mb-2">{member.name}</h2>
                   <p className="text-sm mb-2">{member.loc}</p>
