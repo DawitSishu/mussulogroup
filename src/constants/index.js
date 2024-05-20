@@ -34,7 +34,7 @@ const experiences = [
   },
   {
     company_name:
-      "We offer financial and business advice to individuals, corporates and the public sector entities.  We carefully select the best investment products that are suitable for various risk profiles. The Group looks to continuously expand and collaborate other corporates to form partnerships to grow our expertise and venture opportunities.",
+      "We offer financial and business advice to individuals, corporates and the public sector entities.  We carefully select the best investment products that are suitable for various risk profiles. The Group looks to continuously expand and collaborate with other corporates to form partnerships to grow our expertise and venture opportunities.",
     icon: finan,
     iconBg: "#E6DEDD",
     date: "Finance",
@@ -52,7 +52,7 @@ const experiences = [
     date: "Real Estate",
     points: [
       "Real Estate Investment",
-      "Real Estate Developments",
+      "Real Estate Development",
       "Real Estate Consultancy",
     ],
   },

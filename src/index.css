@@ -199,7 +199,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #050816);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
 }
 .underfilter {
   position: absolute;
@@ -207,7 +207,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(to top, #050816, rgba(0, 0, 0, 0), #050816);
+  background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0), #000000);
 }
 .GoldColored {
   color: #f2b31d;
