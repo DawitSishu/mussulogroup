@@ -74,7 +74,7 @@ const Contact = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="underfilter ll rr"></div>
+        <div className="underfilter"></div>
         <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
           <motion.div
             variants={slideIn("left", "tween", 0.2, 1)}

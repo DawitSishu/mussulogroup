@@ -9,7 +9,7 @@ const SectionWrapper = (Component, idName) =>
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        style={{ overflowX: "hidden" }}
+        style={{ overflowX: "hidden", backgroundColor: "black" }}
         id={idName} // Ensure id is set here
       >
         <Component />

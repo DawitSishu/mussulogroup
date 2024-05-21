@@ -8,6 +8,7 @@ const Hero = React.lazy(() => import("./components/Hero"));
 const Navbar = React.lazy(() => import("./components/Navbar"));
 const Team = React.lazy(() => import("./components/Team"));
 const Projects = React.lazy(() => import("./components/Projects"));
+const Footer = React.lazy(() => import("./components/Footer"));
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Projects />
         <Team />
         <Contact />
+        <Footer />
       </div>
     </BrowserRouter>
   );
