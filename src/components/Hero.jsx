@@ -4,11 +4,10 @@ import globe from "../assets/globe.jpeg";
 const Hero = () => {
   return (
     <section
-      className="relative w-full h-screen mx-auto"
+      className="hero-section relative w-full h-screen mx-auto"
       style={{
         backgroundImage: `url(${globe})`,
         backgroundSize: "cover",
-        backgroundPosition: "55% 65%",
         position: "relative",
       }}
     >

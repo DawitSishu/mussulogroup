@@ -229,3 +229,12 @@
 .footer-bottom {
   text-align: center;
 }
+.hero-section {
+  background-position: 55% 65%;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    background-position: 66% 66%;
+  }
+}
