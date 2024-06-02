@@ -43,10 +43,10 @@ const Team = () => {
             style={{ width: "350px" }}
           >
             <div className="shadow-md rounded-lg overflow-hidden">
-              <div className="p-4">
+              <div className="p-4 text-center">
                 <h2 className="text-xl font-bold mb-2">{member.name}</h2>
                 <p className="text-sm mb-2">{member.loc}</p>
-                <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center">
+                <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center mx-auto">
                   Contact <LinkedInIcon className="ml-1" />
                 </button>
               </div>
