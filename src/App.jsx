@@ -1,5 +1,6 @@
 import { BrowserRouter, Form } from "react-router-dom";
 import React from "react";
+import { LanguageProvider } from "./utils/LanguageContext";
 
 const About = React.lazy(() => import("./components/About"));
 const Contact = React.lazy(() => import("./components/Contact"));
@@ -13,16 +14,18 @@ const Footer = React.lazy(() => import("./components/Footer"));
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="relative z-0 black-gradient">
-        <Navbar />
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Team />
-        <Contact />
-        <Footer />
-      </div>
+      <LanguageProvider>
+        <div className="relative z-0 black-gradient">
+          <Navbar />
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Team />
+          <Contact />
+          <Footer />
+        </div>
+      </LanguageProvider>
     </BrowserRouter>
   );
 };
