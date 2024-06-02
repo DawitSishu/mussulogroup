@@ -14,6 +14,13 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
+  const scrollToSection = (id) => {
+    const yOffset = window.innerWidth < 640 ? -100 : -70; // offset for mobile
+    const element = document.getElementById(id);
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = navLinks.map((link) => document.getElementById(link.id));
@@ -34,8 +41,20 @@ const Navbar = () => {
       });
     };
 
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        scrollToSection(hash);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   return (
@@ -62,7 +81,10 @@ const Navbar = () => {
               className={`${
                 active === link.id ? "text-white" : "GoldColored"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.id)}
+              onClick={() => {
+                setActive(link.id);
+                scrollToSection(link.id);
+              }}
             >
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
@@ -75,7 +97,10 @@ const Navbar = () => {
               className={`${
                 active === link.id ? "text-white" : "GoldColored"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.id)}
+              onClick={() => {
+                setActive(link.id);
+                scrollToSection(link.id);
+              }}
             >
               <a href={`#${link.id}`}>{link.title}</a>
             </div>
@@ -105,6 +130,7 @@ const Navbar = () => {
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(link.id);
+                    scrollToSection(link.id);
                   }}
                 >
                   <a href={`#${link.id}`}>{link.title}</a>
