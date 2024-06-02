@@ -8,6 +8,7 @@ import { SectionWrapper } from "../hoc";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import { slideIn } from "../utils/motion";
+import { useLanguage } from "../utils/LanguageContext";
 
 const Contact = () => {
   const formRef = useRef();
@@ -17,6 +18,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
+  const { language } = useLanguage();
 
   const [loading, setLoading] = useState(false);
 
@@ -33,11 +36,38 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
+    const content = {
+      en: {
+        contact: "Contact",
+        name: "Name",
+        email: "Email",
+        subject: "Subject",
+        message: "Message",
+        sending: "Sending...",
+        send: "Send",
+        successMessage:
+          "Thank you, we will get back to you as soon as possible.",
+        errorMessage: "Something went wrong. Please try again.",
+      },
+      pt: {
+        contact: "Contato",
+        name: "Nome",
+        email: "Email",
+        subject: "Assunto",
+        message: "Mensagem",
+        sending: "Enviando...",
+        send: "Enviar",
+        successMessage:
+          "Obrigado, entraremos em contato com você o mais rápido possível.",
+        errorMessage: "Algo deu errado. Por favor, tente novamente.",
+      },
+    };
+
     try {
       await emailjs.sendForm("", "", form, "");
 
       setLoading(false);
-      alert("Thank you, we will get back to you as soon as possible.");
+      toastr.success(content[language].successMessage);
 
       setForm({
         name: "",
@@ -49,7 +79,7 @@ const Contact = () => {
       setLoading(false);
       console.error(error);
 
-      toastr.error("Something went wrong. Please try again.");
+      toastr.error(content[language].errorMessage);
     }
   };
 
@@ -63,6 +93,27 @@ const Contact = () => {
       timeOut: 5000,
     };
   }, []);
+
+  const content = {
+    en: {
+      contact: "Contact",
+      name: "Name",
+      email: "Email",
+      subject: "Subject",
+      message: "Message",
+      sending: "Sending...",
+      send: "Send",
+    },
+    pt: {
+      contact: "Contato",
+      name: "Nome",
+      email: "Email",
+      subject: "Assunto",
+      message: "Mensagem",
+      sending: "Enviando...",
+      send: "Enviar",
+    },
+  };
 
   return (
     <div className="relative z-0">
@@ -80,14 +131,18 @@ const Contact = () => {
             variants={slideIn("left", "tween", 0.2, 1)}
             className="flex-[0.75] p-8 rounded-2xl "
           >
-            <h3 className={styles.sectionHeadText}>Contact</h3>
+            <h3 className={styles.sectionHeadText}>
+              {content[language].contact}
+            </h3>
             <form
               ref={formRef}
               onSubmit={handleSubmit}
               className="mt-5 flex flex-col gap-8 sm:w-full"
             >
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">Name</span>
+                <span className="text-white font-medium mb-4">
+                  {content[language].name}
+                </span>
                 <input
                   type="text"
                   name="name"
@@ -98,7 +153,9 @@ const Contact = () => {
                 />
               </label>
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">Email</span>
+                <span className="text-white font-medium mb-4">
+                  {content[language].email}
+                </span>
                 <input
                   type="email"
                   name="email"
@@ -109,7 +166,9 @@ const Contact = () => {
                 />
               </label>
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">Subject</span>
+                <span className="text-white font-medium mb-4">
+                  {content[language].subject}
+                </span>
                 <input
                   type="text"
                   name="subject"
@@ -120,7 +179,9 @@ const Contact = () => {
                 />
               </label>
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">Message</span>
+                <span className="text-white font-medium mb-4">
+                  {content[language].message}
+                </span>
                 <textarea
                   rows={7}
                   name="message"
@@ -135,7 +196,7 @@ const Contact = () => {
                 type="submit"
                 className="violet-gradient py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
               >
-                {loading ? "Sending..." : "Send"}
+                {loading ? content[language].sending : content[language].send}
               </button>
             </form>
           </motion.div>

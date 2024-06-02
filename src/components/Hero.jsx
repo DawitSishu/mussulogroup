@@ -1,7 +1,23 @@
 import { styles } from "../styles";
 import globe from "../assets/globe.jpeg";
+import { useLanguage } from "../utils/LanguageContext";
 
 const Hero = () => {
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+      welcome: "Welcome to",
+      company: "MacroM Group",
+      objective: "MacroM Group overarching objective is optimal performance whilst mitigating risk.",
+    },
+    pt: {
+      welcome: "Bem-vindo à",
+      company: "MacroM Group",
+      objective: "O objetivo geral do MacroM Group é o desempenho ideal enquanto mitiga os riscos.",
+    },
+  };
+
   return (
     <section
       className="hero-section relative w-full h-screen mx-auto"
@@ -24,11 +40,11 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Welcome to <span className="text-[#F2B31D]">MacroM Group </span>
+            {content[language].welcome}{" "}
+            <span className="text-[#F2B31D]">{content[language].company}</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            <br /> MacroM Group overarching objective is optimal performance
-            whilst mitigating risk.
+            <br /> {content[language].objective}
           </p>
         </div>
       </div>
