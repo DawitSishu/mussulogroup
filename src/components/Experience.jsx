@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { styles } from "../styles";
-import { experiences } from "../constants";
+import { experiences as experiencesEn, experiencesPt } from "../constants";
 import { SectionWrapper } from "../hoc";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useLanguage } from "../utils/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,11 +88,16 @@ const EXPGrid = ({ serv, servidx }) => {
 };
 
 const Experience = () => {
+  const { language } = useLanguage();
+  const experiences = language === "en" ? experiencesEn : experiencesPt;
+
   return (
     <>
       <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
         <div>
-          <h2 className={`${styles.sectionHeadText} text-center`}>Portfolio</h2>
+          <h2 className={`${styles.sectionHeadText} text-center`}>
+            {language === "en" ? "Portfolio" : "Portfólio"}
+          </h2>
         </div>
 
         <div className="mt-20 flex flex-col">

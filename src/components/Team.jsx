@@ -1,14 +1,18 @@
 import React, { useEffect, useRef } from "react";
-import { team } from "../constants";
+import { team as teamEn, teamPt } from "../constants";
 import { FaLinkedin as LinkedInIcon } from "react-icons/fa";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useLanguage } from "../utils/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Team = () => {
+  const { language } = useLanguage();
+  const team = language === "en" ? teamEn : teamPt;
+
   const ref = useRef();
 
   useEffect(() => {
@@ -34,7 +38,9 @@ const Team = () => {
 
   return (
     <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
-      <h3 className={`${styles.sectionHeadText} text-center`}>The Team</h3>
+      <h3 className={`${styles.sectionHeadText} text-center`}>
+        {language === "en" ? "The Team" : "A Equipe"}
+      </h3>
       <div className="flex flex-wrap justify-center mt-10" ref={ref}>
         {team.map((member, idx) => (
           <div
@@ -47,7 +53,7 @@ const Team = () => {
                 <h2 className="text-xl font-bold mb-2">{member.name}</h2>
                 <p className="text-sm mb-2">{member.loc}</p>
                 <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center mx-auto">
-                  Contact <LinkedInIcon className="ml-1" />
+                  {language === "en" ? "Contact" : "Contato"} <LinkedInIcon className="ml-1" />
                 </button>
               </div>
             </div>
