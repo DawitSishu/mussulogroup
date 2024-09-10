@@ -25,7 +25,7 @@ const About = () => {
   };
 
   return (
-    <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <div className={`${styles.paddingX} mx-2 relative z-0`}>
       <motion.div variants={textVariant()}>
         <h2 className={`${styles.sectionHeadText} text-center`}>
           {content[language].heading}

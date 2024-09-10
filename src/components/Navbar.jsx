@@ -31,6 +31,7 @@ const Navbar = () => {
     const element = document.getElementById(id);
     const y =
       element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    console.log(y, active);
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
@@ -39,16 +40,18 @@ const Navbar = () => {
       const sections = navLinks[language].map((link) =>
         document.getElementById(link.id)
       );
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      const scrollPosition = window.scrollY + window.innerHeight / 5;
 
       sections.forEach((section) => {
         if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
+          const rect = section.getBoundingClientRect();
+          const sectionTop = window.pageYOffset + rect.top;
+          const sectionHeight = rect.height;
 
           if (
             scrollPosition >= sectionTop &&
-            scrollPosition < sectionTop + sectionHeight
+            scrollPosition <= sectionTop + sectionHeight
           ) {
             setActive(section.id);
           }
@@ -72,9 +75,24 @@ const Navbar = () => {
     };
   }, [language]);
 
+  const [lan, setLanguage] = useState("");
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const selectLanguage = (lang) => {
+    setLanguage(lang);
+    if (lang != "") {
+      toggleLanguage(lang);
+    }
+    console.log(lang);
+    setDropdownOpen(false);
+  };
+
   return (
-    <nav className="px-4 sm:px-10 w-full flex items-center py-5 fixed top-0 z-20 black-gradient">
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+    <nav className="md:px-10 px-2 w-full flex items-center py-5 fixed top-0 z-20 black-gradient">
+      <div className="w-full flex  ">
         <Link
           to="/"
           onClick={() => {
@@ -89,7 +107,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10 flex-grow justify-center">
+        <ul className="list-none hidden md:flex flex-row gap-10 flex-grow justify-center ml-15">
           {navLinks[language].slice(0, 4).map((link) => (
             <li
               key={link.id}
@@ -106,18 +124,39 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden sm:flex items-center">
+        <div className="hidden md:flex items-center">
           <div className="relative inline-block text-left">
             <div>
               <button
                 type="button"
-                className="inline-flex  mr-auto justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
                 id="options-menu"
                 aria-haspopup="true"
-                aria-expanded="true"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                aria-expanded={dropdownOpen}
+                onClick={toggleDropdown}
               >
-                {language === "en" ? "English" : "Português"}
+                <span>
+                  {lan === ""
+                    ? "Language"
+                    : lan === "en"
+                    ? "English"
+                    : "Português"}
+                </span>
+                <svg
+                  className={`ml-2 w-5 h-5 transform transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </button>
             </div>
             {dropdownOpen && (
@@ -128,24 +167,40 @@ const Navbar = () => {
                 aria-labelledby="options-menu"
               >
                 <div className="py-1" role="none">
+                  {/* Divider and "Select Language" option */}
                   <a
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
                     onClick={() => {
-                      toggleLanguage("en");
-                      setDropdownOpen(!dropdownOpen);
+                      selectLanguage("");
+                    }}
+                  >
+                    Language
+                  </a>
+
+                  {/* Divider */}
+                  <div className="border-t border-gray-200 my-1"></div>
+
+                  {/* English Option */}
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    onClick={() => {
+                      selectLanguage("en");
                     }}
                   >
                     English
                   </a>
+
+                  {/* Portuguese Option */}
                   <a
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
                     onClick={() => {
-                      toggleLanguage("pt");
-                      setDropdownOpen(!dropdownOpen);
+                      selectLanguage("pt");
                     }}
                   >
                     Português
@@ -154,7 +209,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div className="ml-44">
+
+          <div className="ml-16">
             <div
               className={`${
                 active === navLinks[language][4].id
@@ -173,55 +229,92 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="sm:hidden flex justify-end items-center flex-grow">
+        <div className="md:hidden flex justify-end items-center flex-grow">
           <div className="mr-20">
-            <div className="relative inline-block text-left">
-              <div>
-                <button
-                  type="button"
-                  className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-                  id="options-menu"
-                  aria-haspopup="true"
-                  aria-expanded="true"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+          <div className="relative inline-block text-left">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                id="options-menu"
+                aria-haspopup="true"
+                aria-expanded={dropdownOpen}
+                onClick={toggleDropdown}
+              >
+                <span>
+                  {lan === ""
+                    ? "Language"
+                    : lan === "en"
+                    ? "English"
+                    : "Português"}
+                </span>
+                <svg
+                  className={`ml-2 w-5 h-5 transform transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
                 >
-                  {language === "en" ? "English" : "Português"}
-                </button>
-              </div>
-              {dropdownOpen && (
-                <div
-                  className="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="options-menu"
-                >
-                  <div className="py-1" role="none">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      role="menuitem"
-                      onClick={() => {
-                        toggleLanguage("en");
-                        setDropdownOpen(!dropdownOpen);
-                      }}
-                    >
-                      English
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      role="menuitem"
-                      onClick={() => {
-                        toggleLanguage("pt");
-                        setDropdownOpen(!dropdownOpen);
-                      }}
-                    >
-                      Português
-                    </a>
-                  </div>
-                </div>
-              )}
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
             </div>
+            {dropdownOpen && (
+              <div
+                className="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                <div className="py-1" role="none">
+                  {/* Divider and "Select Language" option */}
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    onClick={() => {
+                      selectLanguage("");
+                    }}
+                  >
+                    Language
+                  </a>
+
+                  {/* Divider */}
+                  <div className="border-t border-gray-200 my-1"></div>
+
+                  {/* English Option */}
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    onClick={() => {
+                      selectLanguage("en");
+                    }}
+                  >
+                    English
+                  </a>
+
+                  {/* Portuguese Option */}
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    onClick={() => {
+                      selectLanguage("pt");
+                    }}
+                  >
+                    Português
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
           </div>
 
           <img

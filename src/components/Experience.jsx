@@ -41,7 +41,7 @@ const EXPGrid = ({ serv, servidx }) => {
   return (
     <div
       ref={ref}
-      className={`flex md:flex-row items-center md:items-start py-4 md:py-6 space-y-4 md:space-y-0 md:space-x-4 ${
+      className={`flex md:flex-row items-center md:items-start py-4 md:py-6  ${
         isImageLeft && window.innerWidth <= 768
           ? "flex-col"
           : "flex-col-reverse"
@@ -93,7 +93,7 @@ const Experience = () => {
 
   return (
     <>
-      <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+      <div className={`${styles.paddingX}  relative z-0`}>
         <div>
           <h2 className={`${styles.sectionHeadText} text-center`}>
             {language === "en" ? "Portfolio" : "Portfólio"}

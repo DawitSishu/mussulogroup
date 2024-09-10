@@ -20,12 +20,12 @@ const Projects = () => {
   };
 
   return (
-    <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <div className={`${styles.paddingX} relative z-0`}>
       <h1 className={`${styles.sectionHeadText} text-center`}>
         {content[language].title}
       </h1>
       <h6
-        className={`sm:text-[18px] text-[14px] text-secondary text-center tracking-wider mt-2 text-white`}
+        className={`sm:text-[18px] text-[14px]  text-center tracking-wider mt-2 text-white`}
       >
         {content[language].description}
       </h6>

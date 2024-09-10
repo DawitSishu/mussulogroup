@@ -37,29 +37,53 @@ const Team = () => {
   }, []);
 
   return (
-    <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <div className={`${styles.paddingX} relative z-0`}>
       <h3 className={`${styles.sectionHeadText} text-center`}>
         {language === "en" ? "The Team" : "A Equipe"}
       </h3>
-      <div className="flex flex-wrap justify-center mt-10" ref={ref}>
+      <div
+        className="team-container flex flex-wrap justify-center mt-10"
+        ref={ref}
+      >
         {team.map((member, idx) => (
           <div
             key={idx}
-            className="max-w-sm mx-4 my-4 team-member"
-            style={{ width: "350px" }}
+            className="team-member shadow-md rounded-lg overflow-hidden p-4 text-center"
           >
-            <div className="shadow-md rounded-lg overflow-hidden">
-              <div className="p-4 text-center">
-                <h2 className="text-xl font-bold mb-2">{member.name}</h2>
-                <p className="text-sm mb-2">{member.loc}</p>
-                <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center mx-auto">
-                  {language === "en" ? "Contact" : "Contato"} <LinkedInIcon className="ml-1" />
-                </button>
-              </div>
-            </div>
+            <h2 className="text-xl font-bold mb-2">{member.name}</h2>
+            <p className="text-sm mb-2">{member.loc}</p>
+            <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center mx-auto">
+              {language === "en" ? "Contact" : "Contato"}{" "}
+              <LinkedInIcon className="ml-1" />
+            </button>
           </div>
         ))}
       </div>
+
+      {/* Media queries for responsiveness */}
+      <style jsx>{`
+        .team-container {
+          display: flex;
+          flex-wrap: nowrap; /* Ensures no wrapping on large screens */
+          gap: 16px; /* Space between cards */
+        }
+
+        .team-member {
+          flex: 1 1 calc(33.33% - 16px); /* Ensures 3 cards per row */
+          min-width: 280px; /* Minimum width of each card */
+          box-sizing: border-box;
+        }
+
+        @media (max-width: 900px) {
+          .team-container {
+            flex-wrap: wrap; /* Enable wrapping below 900px */
+          }
+          .team-member {
+            flex: 1 1 100%; /* Each card takes full width */
+            min-width: 100%; /* Cards will appear one below the other */
+          }
+        }
+      `}</style>
     </div>
   );
 };

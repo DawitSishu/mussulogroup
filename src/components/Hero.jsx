@@ -24,13 +24,23 @@ const Hero = () => {
       style={{
         backgroundImage: `url(${globe})`,
         backgroundSize: "cover",
+        backgroundPosition: "center", // Default for larger screens
         position: "relative",
       }}
     >
+      {/* Media query to adjust for mobile */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-section {
+            background-size: 200% 90% !important; /* Ensure zoomed image */
+            background-position: center 100% !important; /* Ensure adjusted position */
+          }
+        }
+      `}</style>
+      
       <div className="underfilter ll rr"></div>
       <div
-        className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl max-auto flex
-    flex-row items-start gap-5`}
+        className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl max-auto flex flex-row items-start gap-5`}
       >
         <br />
         <div className="flex flex-col justify-center items-center mt-5">
