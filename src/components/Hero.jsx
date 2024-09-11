@@ -8,7 +8,7 @@ const Hero = () => {
   const content = {
     en: {
       welcome: "Welcome to",
-      company: "MacroM Group",
+      company: "MacroM's Group",
       objective: "MacroM Group overarching objective is optimal performance whilst mitigating risk.",
     },
     pt: {

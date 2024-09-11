@@ -13,7 +13,7 @@ const About = () => {
     en: {
       heading: "About us",
       paragraph1:
-        "MacroM Group is a multi-asset international investment company which specialize in navigating the intricate landscape of global markets particularly in Europe and Africa with interests spanning a range of asset classes in various sectors such as  Real Estate, Finance and Technology.",
+        "MacroM Group is a multi-asset international investment company which specialize in navigating the intricate landscape of global markets particularly in Europe and Africa with interests spanning various sectors such as  Real Estate, Finance and Technology.",
       paragraph2:
         "We pride ourselves on our team of experienced specialists, each proficient in their respective domains. This expertise enables us to discern the most promising investment strategies and approaches to curate the best solutions.",
       paragraph3:

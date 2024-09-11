@@ -26,7 +26,7 @@ const navLinks = [
 const experiences = [
   {
     company_name:
-      "Invest and consult on all real estate assets classes such as residential, commercial, or corporate as well as seeking development opportunities that are feasible and fit our requirements.",
+      "Invest and consult on all real estate assets classes such as residential, commercial, and corporate as well as seeking development opportunities that are feasible and fit our requirements.",
     icon: real,
     iconBg: "#383E56",
     date: "Real Estate",
