@@ -26,11 +26,15 @@ const navLinks = [
 const experiences = [
   {
     company_name:
-      "Our team seek investment opportunities for tech solutions and innovations as well as taking initiative on our own in-house projects that improve and empower tech-enabled services. Our third pillar looks to digitally integrate operating businesses that lack transparency and visibility.",
-    icon: tech,
+      "Invest and consult on all real estate assets classes such as residential, commercial, or corporate as well as seeking development opportunities that are feasible and fit our requirements.",
+    icon: real,
     iconBg: "#383E56",
-    date: "Technology",
-    points: ["Tech Start ups", "Tech Innovation", "Digital transformation"],
+    date: "Real Estate",
+    points: [
+      "Real Estate Investment",
+      "Real Estate Development",
+      "Real Estate Consultancy",
+    ],
   },
   {
     company_name:
@@ -46,15 +50,11 @@ const experiences = [
   },
   {
     company_name:
-      "Invest and consult on all real estate assets classes such as residential, commercial, or corporate as well as seeking development opportunities that are feasible and fit our requirements.",
-    icon: real,
+      "Our team seek investment opportunities for tech solutions and innovations as well as taking initiative on our own in-house projects that improve and empower tech-enabled services. Our third pillar looks to digitally integrate operating businesses that lack transparency and visibility.",
+    icon: tech,
     iconBg: "#383E56",
-    date: "Real Estate",
-    points: [
-      "Real Estate Investment",
-      "Real Estate Development",
-      "Real Estate Consultancy",
-    ],
+    date: "Technology",
+    points: ["Tech Start ups", "Tech Innovation", "Digital transformation"],
   },
   {
     company_name: "Secondary arears of interest:",
@@ -97,14 +97,14 @@ const team = [
 const experiencesPt = [
   {
     company_name:
-      "Nossa equipe busca oportunidades de investimento em soluções e inovações tecnológicas, além de tomar a iniciativa em nossos próprios projetos internos que melhoram e capacitam serviços habilitados por tecnologia. Nosso terceiro pilar busca integrar digitalmente empresas operacionais que carecem de transparência e visibilidade.",
-    icon: tech,
+      "Investimos e consultamos em todas as classes de ativos imobiliários, como residencial, comercial ou corporativo, além de buscar oportunidades de desenvolvimento que sejam viáveis e atendam aos nossos requisitos.",
+    icon: real,
     iconBg: "#383E56",
-    date: "Tecnologia",
+    date: "Imobiliário",
     points: [
-      "Startups de Tecnologia",
-      "Inovação Tecnológica",
-      "Transformação Digital",
+      "Investimento Imobiliário",
+      "Desenvolvimento Imobiliário",
+      "Consultoria Imobiliária",
     ],
   },
   {
@@ -119,16 +119,17 @@ const experiencesPt = [
       "Parcerias Corporativas",
     ],
   },
+
   {
     company_name:
-      "Investimos e consultamos em todas as classes de ativos imobiliários, como residencial, comercial ou corporativo, além de buscar oportunidades de desenvolvimento que sejam viáveis e atendam aos nossos requisitos.",
-    icon: real,
+      "Nossa equipe busca oportunidades de investimento em soluções e inovações tecnológicas, além de tomar a iniciativa em nossos próprios projetos internos que melhoram e capacitam serviços habilitados por tecnologia. Nosso terceiro pilar busca integrar digitalmente empresas operacionais que carecem de transparência e visibilidade.",
+    icon: tech,
     iconBg: "#383E56",
-    date: "Imobiliário",
+    date: "Tecnologia",
     points: [
-      "Investimento Imobiliário",
-      "Desenvolvimento Imobiliário",
-      "Consultoria Imobiliária",
+      "Startups de Tecnologia",
+      "Inovação Tecnológica",
+      "Transformação Digital",
     ],
   },
   {
@@ -169,5 +170,4 @@ const teamPt = [
   },
 ];
 
-
-export { experiences, navLinks, team, experiencesPt,teamPt };
+export { experiences, navLinks, team, experiencesPt, teamPt };

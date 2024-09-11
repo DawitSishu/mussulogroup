@@ -45,10 +45,10 @@ const EXPGrid = ({ serv, servidx }) => {
         isImageLeft && window.innerWidth <= 768
           ? "flex-col"
           : "flex-col-reverse"
-      }`}
+      } mb-[110px]`}
     >
       <div
-        className={`w-full md:w-1/2 flex justify-center items-center mb-4 md:mb-0 ${
+        className={`w-full md:w-1/2 flex justify-center items-center mb-2 md:mb-0 ${
           isImageLeft ? "order-1" : "order-2"
         } md:mr-4 image-container`}
       >

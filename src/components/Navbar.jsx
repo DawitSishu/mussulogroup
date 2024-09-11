@@ -91,23 +91,25 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="md:px-10 px-2 w-full flex items-center py-5 fixed top-0 z-20 black-gradient">
-      <div className="w-full flex  ">
-        <Link
-          to="/"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
-        >
-          <img
-            src={logo}
-            alt="logo"
-            style={{ height: "45px", width: "95px" }}
-          />
-        </Link>
+    <nav className="md:px-10 w-full flex items-center py-5 fixed top-0 z-20 black-gradient">
+      <div className="w-full grid grid-cols-3 items-center ">
+        <div className="justify-self-start">
+          <Link
+            to="/"
+            onClick={() => {
+              setActive("");
+              window.scrollTo(0, 0);
+            }}
+          >
+            <img
+              src={logo}
+              alt="logo"
+              style={{ height: "45px", width: "95px" }}
+            />
+          </Link>
+        </div>
 
-        <ul className="list-none hidden md:flex flex-row gap-10 flex-grow justify-center ml-15">
+        <ul className="list-none hidden md:flex flex-row gap-10 justify-center  ">
           {navLinks[language].slice(0, 4).map((link) => (
             <li
               key={link.id}
@@ -124,7 +126,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center justify-self-end">
           <div className="relative inline-block text-left">
             <div>
               <button
@@ -229,51 +231,49 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="md:hidden flex justify-end items-center flex-grow">
-          <div className="mr-20">
-          <div className="relative inline-block text-left">
-            <div>
-              <button
-                type="button"
-                className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-                id="options-menu"
-                aria-haspopup="true"
-                aria-expanded={dropdownOpen}
-                onClick={toggleDropdown}
+        <div className="justify-self-center md:hidden ">
+          <div className="relative inline-block text-center">
+            <button
+              type="button"
+              className="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+              id="options-menu"
+              aria-haspopup="true"
+              aria-expanded={dropdownOpen}
+              onClick={toggleDropdown}
+            >
+              <span>
+                {lan === ""
+                  ? "Language"
+                  : lan === "en"
+                  ? "English"
+                  : "Português"}
+              </span>
+              <svg
+                className={`ml-2 w-5 h-5 transform transition-transform duration-200 ${
+                  dropdownOpen ? "rotate-180" : "rotate-0"
+                }`}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
               >
-                <span>
-                  {lan === ""
-                    ? "Language"
-                    : lan === "en"
-                    ? "English"
-                    : "Português"}
-                </span>
-                <svg
-                  className={`ml-2 w-5 h-5 transform transition-transform duration-200 ${
-                    dropdownOpen ? "rotate-180" : "rotate-0"
-                  }`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  fillRule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {/* Language Dropdown */}
             {dropdownOpen && (
               <div
-                className="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                className="absolute left-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="options-menu"
               >
                 <div className="py-1" role="none">
-                  {/* Divider and "Select Language" option */}
                   <a
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -284,11 +284,7 @@ const Navbar = () => {
                   >
                     Language
                   </a>
-
-                  {/* Divider */}
                   <div className="border-t border-gray-200 my-1"></div>
-
-                  {/* English Option */}
                   <a
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -299,8 +295,6 @@ const Navbar = () => {
                   >
                     English
                   </a>
-
-                  {/* Portuguese Option */}
                   <a
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -315,39 +309,39 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          </div>
+        </div>
 
+        <div className=" md:hidden justify-self-end mr-2">
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
+            className="w-[28px] h-[28px] object-contain cursor-pointer z-50"
             onClick={() => setToggle(!toggle)}
           />
+        </div>
 
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0
-          mx-4 my-2 min-w-[140px]`}
-          >
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks[language].map((link) => (
-                <li
-                  key={link.id}
-                  className={`${
-                    active === link.id ? "text-white" : "GoldColored"
-                  } font-poppins hover:text-white text-[16px] font-medium cursor-pointer`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.id);
-                    scrollToSection(link.id);
-                  }}
-                >
-                  <a href={`#${link.id}`}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div
+          className={`${
+            !toggle ? "hidden" : "flex"
+          } md:hidden p-4 black-gradient absolute top-20 right-0 mx-4 my-2 z-40 rounded-lg max-w-max`}
+        >
+          <ul className="list-none flex justify-start items-start flex-col gap-4">
+            {navLinks[language].map((link) => (
+              <li
+                key={link.id}
+                className={`${
+                  active === link.id ? "text-white" : "GoldColored"
+                } font-poppins hover:text-white text-[16px] font-medium cursor-pointer`}
+                onClick={() => {
+                  setToggle(!toggle);
+                  setActive(link.id);
+                  scrollToSection(link.id);
+                }}
+              >
+                <a href={`#${link.id}`}>{link.title}</a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </nav>

@@ -37,7 +37,7 @@ const Team = () => {
   }, []);
 
   return (
-    <div className={`${styles.paddingX} relative z-0`}>
+    <div className={`${styles.paddingX} relative z-0 mb-[110px]`}>
       <h3 className={`${styles.sectionHeadText} text-center`}>
         {language === "en" ? "The Team" : "A Equipe"}
       </h3>
@@ -61,7 +61,7 @@ const Team = () => {
       </div>
 
       {/* Media queries for responsiveness */}
-      <style jsx>{`
+      <style >{`
         .team-container {
           display: flex;
           flex-wrap: nowrap; /* Ensures no wrapping on large screens */

@@ -64,7 +64,12 @@ const Contact = () => {
     };
 
     try {
-      await emailjs.sendForm("", "", form, "");
+      await emailjs.send(
+        "service_j64b8cu",
+        "template_mhdihtk",
+        form,
+        "vnzB3Yy_LQb3lekwM"
+      );
 
       setLoading(false);
       toastr.success(content[language].successMessage);
