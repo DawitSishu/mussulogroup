@@ -17,7 +17,7 @@ const About = () => {
       paragraph2:
         "We pride ourselves on our team of experienced specialists, each proficient in their respective domains. This expertise enables us to discern the most promising investment strategies and approaches to curate the best solutions.",
       paragraph3:
-        "Beyond traditional investment avenues, MacroM possess a keen eye for identifying opportunistic opportunities. Whether it's uncovering undervalued assets ripe for growth or breathing new life into underperforming ventures, we are adept at capitalizing on market inefficiencies. Moreover, we confidently venture into pioneering new projects and innovations within our areas of expertise.",
+        "Beyond traditional investment avenues, MacroM has a sharp eye for identifying opportunistic prospects. Whether it's uncovering undervalued assets ripe for growth or breathing new life into underperforming ventures, we are adept at capitalizing on market inefficiencies. Moreover, we confidently venture into pioneering new projects and innovations within our areas of expertise.",
     },
     pt: {
       heading: "Sobre nós",

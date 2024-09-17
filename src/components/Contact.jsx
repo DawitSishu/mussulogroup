@@ -131,7 +131,7 @@ const Contact = () => {
         }}
       >
         <div className="underfilter"></div>
-        <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+        <div className={`${styles.paddingX} max-w-7xl mx-auto relative z-0`}>
           <motion.div
             variants={slideIn("left", "tween", 0.2, 1)}
             className="flex-[0.75] p-8 rounded-2xl "

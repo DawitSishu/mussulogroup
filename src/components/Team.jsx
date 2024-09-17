@@ -51,16 +51,16 @@ const Team = () => {
             className="team-member shadow-md rounded-lg overflow-hidden p-4 text-center"
           >
             <h2 className="text-xl font-bold mb-2">{member.name}</h2>
-            <p className="text-sm mb-2">{member.loc}</p>
-            <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center mx-auto">
+            <p className="text-sm mb-2 font-bold" style={{color :"#ffae05"}}>{member.loc}</p>
+            <p className="text-sm mb-2">{member.bio}</p>
+            {/* <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center mx-auto">
               {language === "en" ? "Contact" : "Contato"}{" "}
               <LinkedInIcon className="ml-1" />
-            </button>
+            </button> */}
           </div>
         ))}
       </div>
 
-      {/* Media queries for responsiveness */}
       <style >{`
         .team-container {
           display: flex;

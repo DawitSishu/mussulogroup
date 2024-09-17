@@ -91,7 +91,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="md:px-10 w-full flex items-center py-5 fixed top-0 z-20 black-gradient">
+    <nav className="md:px-10 w-full flex items-center py-5 fixed top-0 z-20 bg-black">
       <div className="w-full grid grid-cols-3 items-center ">
         <div className="justify-self-start">
           <Link
@@ -109,7 +109,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <ul className="list-none hidden md:flex flex-row gap-10 justify-center  ">
+        <ul className="list-none hidden md:flex flex-row lg:gap-10 md:gap-5 justify-center  ">
           {navLinks[language].slice(0, 4).map((link) => (
             <li
               key={link.id}
@@ -212,7 +212,7 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className="ml-16">
+          <div className="lg:ml-16 md:ml-1">
             <div
               className={`${
                 active === navLinks[language][4].id
