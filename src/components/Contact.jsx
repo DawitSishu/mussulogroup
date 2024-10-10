@@ -65,10 +65,10 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        "service_j64b8cu",
-        "template_mhdihtk",
+        "service_1jf39dm",
+        "template_ly45s2s",
         form,
-        "vnzB3Yy_LQb3lekwM"
+        "whSFEwx5kbX0w3KzI"
       );
 
       setLoading(false);
