@@ -9,12 +9,12 @@ const Hero = () => {
     en: {
       welcome: "Welcome to",
       company: "MacroM Group",
-      objective: "MacroM's Group overarching objective is optimal performance whilst mitigating risk.",
+      objective: "MacroM’s Group objective is high returns whilst mitigating risk.",
     },
     pt: {
       welcome: "Bem-vindo à",
       company: "MacroM Group",
-      objective: "O objetivo geral do MacroM Group é o desempenho ideal enquanto mitiga os riscos.",
+      objective: "O objetivo do Grupo MacroM é obter retornos elevados e, ao mesmo tempo, mitigar o risco.",
     },
   };
 
