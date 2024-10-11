@@ -111,7 +111,7 @@ const experiencesPt = [
     ],
   },
   {
-    company_name: "Áreas secundárias de interesse:",
+    company_name: "Outras áreas de interesse:",
     icon: alt,
     iconBg: "#E6DEDD",
     date: "Outras áreas de interesse",
