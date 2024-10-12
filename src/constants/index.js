@@ -130,7 +130,7 @@ const team = [
   {
     name: "Marcello Morais",
     loc: "Group Founder and Managing Partner",
-    bio: "Marcello is a Master in Real Estate Finance and a graduate in Business Management, where he studied at City University, London’s UK top ranked business school. He has held various real estate roles including valuations, investment and development, as well as purchase and disposal of residential units in London. He later went to work in the City of London offering financial advice to a book of clients in excess 100M USD, advising on their financial portfolios' asset allocation and wealth management. Some of the companies he has worked for include; BNP Paribas Real Estate, Akelius Residential Property and St. James's Place Wealth Management.",
+    bio: "Marcello is a Master in Real Estate Finance and a graduate in Business Management, where he studied at City University of London, a UK top ranked business school. He has held various real estate roles including valuations, investment and development, as well as purchase and disposal of residential units in London. He later went to work in the City of London offering financial advice to a book of clients in excess 100M USD, advising on their financial portfolios' asset allocation and wealth management. Some of the companies he has worked for include; BNP Paribas Real Estate, Akelius Residential Property and St. James's Place Wealth Management.",
     img: real,
     link: "https://www.linkedin.com/",
   },
@@ -155,7 +155,7 @@ const teamPt = [
     name: "Marcello Morais",
     loc: "Fundador do Grupo e Sócio Gerente",
     img: real,
-    bio: "Marcello é mestre em Finanças Imobiliárias e graduado em Gestão de Negócios, onde estudou na City University, a melhor escola de negócios do Reino Unido em Londres. Ele ocupou vários cargos no setor imobiliário, incluindo avaliações, investimentos e desenvolvimento, bem como compra e alienação de unidades residenciais em Londres. Mais tarde, ele foi trabalhar na cidade de Londres, oferecendo consultoria financeira a uma carteira de clientes com valor superior a 100 milhões de dólares, aconselhando sobre a alocação de ativos e gestão de patrimônio de suas carteiras financeiras. Algumas das empresas para as quais trabalhou incluem; BNP Paribas Real Estate, Akelius Residential Property e St. James's Place Wealth Management.",
+    bio: "Marcello é mestre em Finanças Imobiliárias e graduado em Gestão de Negócios, onde estudou na City University of London, uma escola de negócios de primeira linha no Reino Unido. Ele ocupou vários cargos no setor imobiliário, incluindo avaliações, investimentos e desenvolvimento, bem como compra e alienação de unidades residenciais em Londres. Mais tarde, ele foi trabalhar na cidade de Londres, oferecendo consultoria financeira a uma carteira de clientes com valor superior a 100 milhões de dólares, aconselhando sobre a alocação de ativos e gestão de patrimônio de suas carteiras financeiras. Algumas das empresas para as quais trabalhou incluem; BNP Paribas Real Estate, Akelius Residential Property e St. James's Place Wealth Management.",
     link: "https://www.linkedin.com/",
   },
   {
